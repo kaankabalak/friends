@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>Friends</title>
+</head>
+<body>
+  <h2>Friends</h2>
+  <!-- we can use the line below to see all of our data in our template -->
+  <!-- with all the data we can then construct a more structured output -->
+  <table id="friend_table">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Friend Since</th>
+  </tr>
+  {% for friend in all_friends: %}
+  <tr>
+    <td>{{ friend['first_name'] }} {{ friend['last_name']}}</td>
+    <td>{{ friend['age'] }}</td>
+    <td>{{ friend['created_at'].month }}/{{ friend['created_at'].day }}/{{ friend['created_at'].year }}</td>
+  </tr>
+  {% endfor %}
+  </table>
+
+  <h2>Add a Friend</h2>
+  <form action='/friends' method='POST'>
+    <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+    <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+    <label for="occupation">Age:<input type="text" name="age" id="age"></label>
+    <input type="submit" value="Add">
+  </form>
+</body>
+</html>
